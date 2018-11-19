@@ -27,9 +27,9 @@ const userSchema = new Schema({
       enum: statesArray,
     },
   },
-  image: {type: Schema.Types.ObjectId, ref: 'Picture'},
-  interest: [{ type: Schema.Types.ObjectId, ref: 'Book', { timestamps: { createdAt: 'created_at' }}}],
-  post:[{ type: Schema.Types.ObjectId, ref: 'Book', { timestamps: { createdAt: 'created_at' }}}],
+  image: { type: Schema.Types.ObjectId, ref: 'Picture' },
+  interest: [{ type: Schema.Types.ObjectId, ref: 'Book' }, { timestamps: { createdAt: 'created_at' } }],
+  post: [{ type: Schema.Types.ObjectId, ref: 'Book' }, { timestamps: { createdAt: 'created_at' } }],
 });
 
 userSchema.set('timestamps', true);

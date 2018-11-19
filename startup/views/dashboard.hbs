@@ -1,0 +1,21 @@
+<section>
+<div class="alert">
+  {{message}}
+</div>
+<div>
+  <a href="#">New Interests</a>
+  <a href="#">New Book</a>
+</div>
+<div>
+  <h2>Your Interests</h2>
+  {{#each booksInterests}}
+    {{>books}}
+  {{/each}}
+</div>
+<div class>
+  <h2>Your Books</h2>
+  {{#each books}}
+    {{>books}}
+  {{/each}}
+</div>
+</section>
