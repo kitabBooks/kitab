@@ -10,7 +10,7 @@ const bookSchema = new Schema({
   interest: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   post: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 
-  //image
+  // image
 
   publisher: {
     type: Schema.Types.ObjectId,
