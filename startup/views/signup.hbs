@@ -1,3 +1,5 @@
+<div class="signup-container">
+
 <h2 class="page-header">Join our club</h2>
 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam commodi distinctio magni excepturi, est temporibus, sit voluptates, veritatis quia reiciendis repellat natus aliquam corporis? In, maiores. Voluptatem voluptatibus neque maxime?</p>
 {{#if user}}
@@ -11,7 +13,7 @@
         <div class="alert alert-danger">{{msg}}</div>g
       {{/each}}
 {{/if}}
-<form method="post" action="/users/register">
+<form method="post" action="/users/signup">
    <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control" placeholder="Name" name="name">
@@ -42,3 +44,4 @@
   </div>
   <button type="submit" class="btn btn-default">Sign Up</button>
 </form>
+</div>
