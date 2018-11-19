@@ -1,2 +1,7 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<section class="books">
+  <div style="color: red">
+    {{#each books}}
+      {{>books}}
+    {{/each}}
+  </div>
+</section>
