@@ -1,5 +1,7 @@
 const createError = require('http-errors');
+const session = require('express-session');
 const express = require('express');
+const passport = require('passport');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,7 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
-const passport = require('./rules/passport');
+const passportSetup = require('./rules/passport');
 
 
 // view engine setup
@@ -50,6 +52,5 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session());
 
 module.exports = app;
