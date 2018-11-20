@@ -6,7 +6,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
+
 const authRoutes = require('./routes/auth/signup');
+const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 
@@ -16,6 +18,26 @@ const indexRouter = require('./routes/index');
 const app = express();
 const passportSetup = require('./rules/passport');
 
+// Mongoose conection
+
+mongoose
+  .connect(
+    'mongodb://localhost/kitab',
+    { useNewUrlParser: true },
+  )
+  .then((x) => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`,
+    );
+  })
+  .catch((err) => {
+    console.error('Error connecting to mongo', err);
+  });
+
+const appName = require('./package.json').name;
+const debug = require('debug')(
+  `${appName}:${path.basename(__filename).split('.')[0]}`,
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,11 +72,13 @@ app.use((err, req, res, next) => {
 
 // passport
 
-app.use(session({
-  secret: 'our-passport-local-strategy-app',
-  resave: true,
-  saveUninitialized: true,
-}));
+app.use(
+  session({
+    secret: 'our-passport-local-strategy-app',
+    resave: true,
+    saveUninitialized: true,
+  }),
+);
 
 app.use(passport.initialize());
 
