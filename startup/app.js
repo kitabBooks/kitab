@@ -15,11 +15,7 @@ const loginRoute = require('./routes/auth/signin');
 const bookRouter = require('./routes/books');
 // const usersRouter = require('./routes/users');
 
-
-
-
 const app = express();
-const passportSetup = require('./rules/passport');
 // passport
 app.use(flash());
 app.use(
@@ -34,7 +30,7 @@ app.use(
     }),
   }),
 );
- require('./rules/passport')(app);
+require('./rules/passport')(app);
  // Routes
 
 
