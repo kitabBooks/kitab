@@ -1,22 +1,20 @@
 const createError = require('http-errors');
 const session = require('express-session');
 const express = require('express');
-const passport = require('passport');
+// const passport = require('passport');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
+const MongooseStore = require('connect-mongo')(session);
 const authRoutes = require('./routes/auth/signup');
+const loginRoute = require('./routes/auth/signin');
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 
-
-
-
 const app = express();
-const passportSetup = require('./rules/passport');
 
 // Mongoose conection
 
@@ -50,8 +48,28 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport
+app.use(flash());
+app.use(
+  session({
+    secret: 'our-passport-local-strategy-app',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 },
+    store: new MongooseStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60,
+    }),
+  }),
+);
+
+require('./rules/passport')(app);
+
+// Routes
+
 app.use('/', authRoutes);
 app.use('/', indexRouter);
+app.use('/', loginRoute);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
@@ -69,17 +87,4 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// passport
-
-app.use(
-  session({
-    secret: 'our-passport-local-strategy-app',
-    resave: true,
-    saveUninitialized: true,
-  }),
-);
-
-app.use(passport.initialize());
-
 module.exports = app;
