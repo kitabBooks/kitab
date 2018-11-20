@@ -1,9 +1,10 @@
-<div class="login-container">
+<div class="container">
 <h2 class="page-header">Sign in</h2>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, aut?</p>
 {{#if message}}
 <div>{{message}}</div>
 {{/if}}
+<div>
 <form method="post" action="/users/signin">
   <div class="form-group">
     <label>Username</label>
@@ -16,4 +17,5 @@
   <button type="submit" class="btn btn-default">Sign In</button>
 </form>
 <p> <a href="#"></a> Forgot your password? </p>
+
 </div>
