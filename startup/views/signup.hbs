@@ -10,10 +10,10 @@
 {{/if}} 
 {{#if errors}}
       {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>g
+        <div class="alert alert-danger">{{message}}</div>g
       {{/each}}
 {{/if}}
-<form method="post" action="/users/signup">
+<form method="post" action="/signup">
    <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control" placeholder="Name" name="name">
@@ -26,7 +26,7 @@
     <label>Password</label>
     <input type="password" class="form-control" placeholder="Password" name="Password">
   </div>
-  <div class="form-group">
+  <div class="form-group">signup
     <label>Username</label>
     <input type="text" class="form-control" placeholder="Username" name="Username">
   </div>
