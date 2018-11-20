@@ -46,10 +46,12 @@ router.post('/signup', (req, res, next) => {
       username,
       password: hashedPass,
       email,
-      street: address,
-      state,
-      city,
-
+      address: {
+        zip,
+        street: address,
+        city,
+        state,
+      },
     };
     const theUser = new User(userSubmission);
     theUser.save((err) => {
