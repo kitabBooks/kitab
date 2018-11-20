@@ -11,6 +11,7 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth/signup');
 const indexRouter = require('./routes/index');
+const bookRouter = require('./routes/books');
 // const usersRouter = require('./routes/users');
 
 
@@ -53,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', authRoutes);
 app.use('/', indexRouter);
+app.use('/', bookRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
