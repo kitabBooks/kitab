@@ -6,11 +6,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-
+const flash = require('connect-flash');
+const MongooseStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth/signup');
 // const bookRoutes = require('./routes/booksgallery.js');
 const indexRouter = require('./routes/index');
+const loginRoute = require('./routes/auth/signin');
 const bookRouter = require('./routes/books');
 // const usersRouter = require('./routes/users');
 
@@ -19,6 +21,24 @@ const bookRouter = require('./routes/books');
 
 const app = express();
 const passportSetup = require('./rules/passport');
+// passport
+app.use(flash());
+app.use(
+  session({
+    secret: 'our-passport-local-strategy-app',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 },
+    store: new MongooseStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60,
+    }),
+  }),
+);
+ require('./rules/passport')(app);
+ // Routes
+
+
 
 // Mongoose conection
 
@@ -57,6 +77,7 @@ app.use('/', indexRouter);
 // app.use('/', bookRoutes);rs
 
 app.use('/', bookRouter);
+app.use('/', loginRoute);
 
 // app.use('/users', usersRouter);
 
