@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const pictureSchema = new Schema({
-  path: String,
+  title: String,
+  description: String,
+  imgName: String,
+  imgPath: String,
 }, {
-  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+  timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" }
 });
 
 const Picture = mongoose.model('Picture', pictureSchema);

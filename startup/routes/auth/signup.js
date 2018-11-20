@@ -6,8 +6,8 @@ const router = express.Router();
 const bcryptSalt = 10;
 
 const statesArray = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RR', 'RO', 'RJ', 'RN', 'RS', 'SC', 'SP', 'SE', 'TO'];
+
 router.get('/signup', (req, res, next) => {
-  console.log('in get');
   res.render('signup', {
     message: '',
     statesArray,

@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const MongooseStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth/signup');
+// const bookRoutes = require('./routes/booksgallery.js');
 const indexRouter = require('./routes/index');
 const loginRoute = require('./routes/auth/signin');
 const bookRouter = require('./routes/books');
@@ -68,6 +69,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', authRoutes);
 app.use('/', indexRouter);
+
+// app.use('/', bookRoutes);rs
+
 app.use('/', bookRouter);
 app.use('/', loginRoute);
 
