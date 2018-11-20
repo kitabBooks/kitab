@@ -13,10 +13,14 @@ router.get('/signup', (req, res, next) => {
 });
 router.post('/signup', (req, res, next) => {
   const name = req.body.name;
+
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
   const address = req.body.address;
+  const state = req.body.state;
+  const city = req.body.city;
+  const zip = req.body.zip;
 
   if (email === '' || password === '') {
     res.render('signup', {
@@ -43,6 +47,9 @@ router.post('/signup', (req, res, next) => {
       password: hashedPass,
       email,
       address,
+      street: address,
+      state,
+      city,
     };
     const theUser = new User(userSubmission);
     theUser.save((err) => {

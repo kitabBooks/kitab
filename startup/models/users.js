@@ -23,7 +23,7 @@ const userSchema = new Schema({
     state: {
       type: String,
       uppercase: true,
-      required: true,
+      required: false,
       enum: statesArray,
     },
   },
