@@ -1,6 +1,8 @@
 <div>
   <h1>Book Gallery</h1>
-  {{#each books}}
-    {{>books this}}
-  {{/each}}
+    {{#each books}}
+      <h3>{{this.title}}</h3>
+      <span>{{this.author}}</span>
+      <p>{{this.description}}</p>
+    {{/each}}
 </div>
