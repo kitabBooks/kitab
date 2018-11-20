@@ -18,6 +18,9 @@ router.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const address = req.body.address;
+  const state = req.body.state;
+  const city = req.body.city;
+  const zip = req.body.zip;
 
   if (email === '' || password === '') {
     res.render('signup', {
@@ -40,11 +43,13 @@ router.post('/signup', (req, res, next) => {
     const hashedPass = bcrypt.hashSync(password, salt);
     const userSubmission = {
       name,
-      email,
-      password: hashedPass,
       username,
-      zip: address,
-      
+      password: hashedPass,
+      email,
+      street: address,
+      state,
+      city,
+
     };
     const theUser = new User(userSubmission);
     theUser.save((err) => {
