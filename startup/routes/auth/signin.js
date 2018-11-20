@@ -11,12 +11,12 @@ const passport = require('passport');
 
 
 authRoutes.get('/users/signin', (req, res, next) => {
-  res.render('login');
+  res.render('login', { message: req.flash('error') });
 });
 
 authRoutes.post('/users/signin', passport.authenticate('local', {
   successRedirect: 'dashboard',
-  failureRedirect: 'login',
+  failureRedirect: '/users/signin',
   failureFlash: true,
   passReqToCallback: true,
 }));
