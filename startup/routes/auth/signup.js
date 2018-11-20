@@ -1,22 +1,24 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-
 const User = require('../../models/users');
 
-const bcryptSalt = 10;
 const router = express.Router();
+const bcryptSalt = 10;
 
+const statesArray = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RR', 'RO', 'RJ', 'RN', 'RS', 'SC', 'SP', 'SE', 'TO'];
 router.get('/signup', (req, res, next) => {
   console.log('in get');
   res.render('signup', {
     message: '',
+    statesArray,
   });
 });
 router.post('/signup', (req, res, next) => {
   const name = req.body.name;
-  const email = req.body.email;
+
   const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email;
   const address = req.body.address;
   const state = req.body.state;
   const city = req.body.city;
@@ -50,8 +52,9 @@ router.post('/signup', (req, res, next) => {
         zip,
         street: address,
         city,
-        state,
+        state , 
       },
+
     };
     const theUser = new User(userSubmission);
     theUser.save((err) => {
