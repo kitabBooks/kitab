@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
 
-const authRoutes = require('./routes/auth/signup');
 const mongoose = require('mongoose');
+const authRoutes = require('./routes/auth/signup');
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 
