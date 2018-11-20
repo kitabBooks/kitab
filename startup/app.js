@@ -4,7 +4,6 @@ const express = require('express');
 const passport = require('passport');
 const path = require('path');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
 
@@ -12,6 +11,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth/signup');
 // const bookRoutes = require('./routes/booksgallery.js');
 const indexRouter = require('./routes/index');
+const bookRouter = require('./routes/books');
 // const usersRouter = require('./routes/users');
 
 
@@ -49,12 +49,15 @@ hbs.registerPartials('HERE WE SET THE LOCATION OF OUR PARTIALS');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', authRoutes);
 app.use('/', indexRouter);
+
 // app.use('/', bookRoutes);rs
+
+app.use('/', bookRouter);
+
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
