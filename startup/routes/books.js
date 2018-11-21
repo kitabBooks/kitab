@@ -1,9 +1,18 @@
-let express = require('express');
+const express = require('express');
+const Book = require ('../models/books');
 
-let router = express.Router();
+const router = express.Router();
 
-/* GET book page. */
+/* GET books page. */
 router.get('/books', (req, res, next) => {
-  res.render('bookgallery');
+  Book.find()
+    .then((books) => {
+      res.render('bookgallery', { books });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
+
+
 module.exports = router;

@@ -72,6 +72,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', authRoutes);
+app.use('/', indexRouter);
+app.use('/', bookRouter);
+
+// app.use('/', bookRoutes);rs
+
+app.use('/', bookRouter);
+app.use('/', loginRoute);
 
 // app.use('/users', usersRouter);
 
