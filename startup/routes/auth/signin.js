@@ -20,6 +20,11 @@ authRoutes.post('/users/signin', passport.authenticate('local', {
 
 }));
 
+authRoutes.get('/users/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 // authRoutes.get('/private-page', ensureLogin.ensureLoggedIn(), (req, res) => {
 //   res.render('private', { user: req.user });
 // });
