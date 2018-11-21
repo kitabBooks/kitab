@@ -8,10 +8,9 @@ const bookSchema = new Schema({
   description: String,
   ISBN: Number,
   author: String,
-  theme: [],
+  publisher: 'String',
   interest: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   post: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  publisher: 'String',
 });
 
 const Book = mongoose.model('Book', bookSchema);

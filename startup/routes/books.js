@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/books', (req, res, next) => {
   Book.find()
     .then((books) => {
-      res.render('bookgallery', { books });
+      res.render('bookgallery', { books, user: req.user });
     })
     .catch((error) => {
       console.log(error);

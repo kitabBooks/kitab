@@ -3,19 +3,20 @@
   {{message}}
 </div>
 <div>
-  <a href="#">New Interests</a>
-  <a href="#">New Book</a>
+  <h2>Welcome {{user.name}}</h2>
 </div>
 <div>
   <h2>Your Interests</h2>
   {{#each booksInterests}}
     {{>books}}
   {{/each}}
+  <a href="#">Add New</a>
 </div>
 <div class>
   <h2>Your Books</h2>
   {{#each books}}
     {{>books}}
   {{/each}}
+  <a href="#">Add New</a>
 </div>
 </section>

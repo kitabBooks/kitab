@@ -10,11 +10,11 @@
     <div class="header clearfix">
       <nav>
         <ul class="nav nav-pills pull-right">
-          {{#if isUserLoggedIn  }}
+          {{#if user}}
             <a href="#"><img src="img.jpg" alt="{{name}}" style="width:100%"></a>
               <li role="presentation"><a href="/">Home</a></li>
               <li role="presentation"><a href="/interest">Interests</a></li>
-              {{!-- <li role="presentation"><a href="/post">Post</a></li> --}}
+              <li role="presentation"><a href="/post">Post</a></li>
               <li role="presentation"><a href="/profile">Profile</a></li>
               <li role="presentation"><a href="/users/logout">Log Out</a></li>
             {{else}}

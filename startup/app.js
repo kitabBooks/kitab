@@ -16,7 +16,8 @@ const indexRouter = require('./routes/index');
 const loginRoute = require('./routes/auth/signin');
 // const editRoute = require('./routes/auth/profileEdit');
 const bookRouter = require('./routes/books');
-// const usersRouter = require('./routes/users');
+const dashboardRoute = require('./routes/auth/dashboard');
+
 const app = express();
 // passport
 app.use(flash());
@@ -72,7 +73,7 @@ app.use('/', authRoutes);
 app.use('/', indexRouter);
 app.use('/', bookRouter);
 app.use('/', loginRoute);
-// app.use('/', editRoute);
+app.use('/', dashboardRoute);
 
 
 // catch 404 and forward to error handler
@@ -91,10 +92,6 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-
-
-
-
 // passport
 
 app.use(
@@ -104,7 +101,6 @@ app.use(
     saveUninitialized: true,
   }),
 );
-
 
 
 app.use(passport.initialize());
