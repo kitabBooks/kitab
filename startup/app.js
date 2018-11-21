@@ -69,6 +69,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', authRoutes);
 app.use('/', indexRouter);
+app.use('/', bookRouter);
 
 // app.use('/', bookRoutes);rs
 

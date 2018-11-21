@@ -3,7 +3,7 @@ const Book = require ('../models/books');
 
 const router = express.Router();
 
-/* GET book page. */
+/* GET books page. */
 router.get('/books', (req, res, next) => {
   Book.find()
     .then((books) => {

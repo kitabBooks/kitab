@@ -1,13 +1,6 @@
 <div class="user-details">
-    {{#with celeb}}
+    {{#with users}}
     <img class = "photo" src = {{image}}/>
-    <li><h3>{{name}}</h3></li>
-    <li>{{password}}</li>
-    <li>{{street}}</li>
-    <li> {{this.city}}</li>
-    <li> {{this.state}}</li>
-
-    {{#with celeb}}
 
     <form action="/userprofile/{{_id}}/edit" method="POST">
         <label for="name">Name</label>
