@@ -11,7 +11,6 @@ authRoutes.get('/users/signin', (req, res, next) => {
 });
 authRoutes.post('/users/signin', passport.authenticate('local', {
 
-  
   successRedirect: 'dashboard',
   failureRedirect: 'signin',
   failureFlash: true,
