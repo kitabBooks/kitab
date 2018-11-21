@@ -3,12 +3,7 @@
 <div>
   <h1>Book Gallery</h1>
     {{#each books}}
-      <div>
-        <img src={{this.img}} alt="">
-      </div>
-      <h3>{{this.title}}</h3>
-      <span><b>{{this.author}}</b></span>
-      <p>{{this.description}}</p>
+      {{> books}}
     {{/each}}
 </div>
 

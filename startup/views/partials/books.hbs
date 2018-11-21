@@ -1,8 +1,9 @@
 <div class="book" style="width: 33.333%;">
-      <img class="book-img" src= {{#}} alt="">
+      <img class="book-img" src= {{this.img}} alt="">
       <div class="book-body">
-        <h5 class="book-title">{{#}}</h5>
-        <p class="book-description">{{#}}</p>
+        <h5 class="book-title">{{this.title}}</h5>
+        <h5 class="book-author">{{this.author}}</h5>
+        <p class="book-description">{{this.description}}</p>
         <a href="#">Detail</a>
       </div>
 </div>
