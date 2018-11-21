@@ -11,6 +11,7 @@ router.get('/signup', (req, res, next) => {
   res.render('signup', {
     message: '',
     statesArray,
+    user: req.user,
   });
 });
 router.post('/signup', (req, res, next) => {

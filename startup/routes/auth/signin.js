@@ -9,7 +9,7 @@ const User = require('../../models/users');
 // const ensureLogin = require('connect-ensure-login');
 // const User = require('../../models/users');
 authRoutes.get('/users/signin', (req, res, next) => {
-  res.render('login');
+  res.render('login', { user: req.user });
 });
 authRoutes.post('/users/signin', passport.authenticate('local', {
 
