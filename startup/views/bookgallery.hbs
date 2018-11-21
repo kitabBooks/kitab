@@ -3,6 +3,9 @@
 <div>
   <h1>Book Gallery</h1>
     {{#each books}}
+      <div>
+        <img src={{this.img}} alt="">
+      </div>
       <h3>{{this.title}}</h3>
       <span><b>{{this.author}}</b></span>
       <p>{{this.description}}</p>
@@ -10,17 +13,3 @@
 </div>
 
 </section> 
-
-{{!-- <h2>Upload a new Movie</h2>
-<form action="/booksgallery" method="post" enctype="multipart/form-data">
-  <label>Title</label>
-  <input type="text" name="title">
-
-  <label>Description</label>
-  <input type="text" name="description">
-
-  <label>Poster</label>
-  <input type="file" name="photo">
-
-  <input type="submit" value="SAVE">
-</form> --}}
