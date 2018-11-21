@@ -14,7 +14,7 @@ const loggedRoute = require('./routes/auth/dashboard');
 const authRoutes = require('./routes/auth/signup');
 const indexRouter = require('./routes/index');
 const loginRoute = require('./routes/auth/signin');
-// const editRoute = require('./routes/auth/profileEdit');
+const editRoute = require('./routes/auth/profileEdit');
 const bookRouter = require('./routes/books');
 const dashboardRoute = require('./routes/auth/dashboard');
 
@@ -74,6 +74,7 @@ app.use('/', indexRouter);
 app.use('/', bookRouter);
 app.use('/', loginRoute);
 app.use('/', dashboardRoute);
+app.use('/', editRoute);
 
 
 // catch 404 and forward to error handler

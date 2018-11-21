@@ -1,25 +1,45 @@
-<div class="user-details">
-    {{#with users}}
-    <img class = "photo" src = {{image}}/>
+<div class="container">
 
-    <form action="/userprofile/{{_id}}/edit" method="POST">
-        <label for="name">Name</label>
-        <input type="text" name="name" value="{{name}}">
 
-        <label for="Password">Password</label>
-        <input type="text" name="password" value="{{password}}">
+    <form action="/profile" method="POST">
+  <div class="form-group">
+     <label for="name">Name</label>
+    <input type="text" class="form-control" name="name"  value="{{user.name}}" >
+  </div>
 
-        <label for="street">street</label>
-        <input type="text" name="street" value="{{street}}">
+    <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" name="username"value="{{user.username}}">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" value="{{user.password}}">
+  </div>
 
-        <label for="city">City</label>
-        <input type="text" name="city" value="{{city}}">
+  <div class="form-group">
+    <label>Address</label>
+    <input type="text" class="form-control" name="street" value="{{user.address.street}}" >
+  </div>
+   <div class="form-group">
+    <label>Zip</label>
+    <input type="Number" class="form-control" name="zip" value="{{user.address.zip}}" >
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input type="text" class="form-control" name="city" value="{{user.address.city}}" >
+  </div>
+   <div class="form-group">
+    <label>State</label>
+    <input type="text" class="form-control" name="state" value="{{user.address.state}}" >
+  </div>
+<button type="submit" class="btn btn-default">Edit</button>
 
-        <label for="state">State</label>
-        <input type="text" name="state" value="{{state}}">
+       
 
-        <button type="submit">Edit</button>
+        
+
+        
     </form>
 
-    {{/with}}
+  
 </div>
