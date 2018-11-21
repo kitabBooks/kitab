@@ -14,6 +14,7 @@ router.get('/signup', (req, res, next) => {
   });
 });
 router.post('/signup', (req, res, next) => {
+  // res.send(req.body);
   const name = req.body.name;
 
   const username = req.body.username;
@@ -52,7 +53,7 @@ router.post('/signup', (req, res, next) => {
         zip,
         street: address,
         city,
-        state , 
+        state,
       },
 
     };

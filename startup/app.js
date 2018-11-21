@@ -32,14 +32,6 @@ app.use(
   }),
 );
 require('./rules/passport')(app);
-// Routes
-
-app.use('/', loggedRoute);
-app.use('/', authRoutes);
-app.use('/', indexRouter);
-app.use('/', bookRouter);
-app.use('/', loginRoute);
-
 
 // Mongoose conection
 
@@ -72,16 +64,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
+
+app.use('/', loggedRoute);
 app.use('/', authRoutes);
 app.use('/', indexRouter);
 app.use('/', bookRouter);
-
-// app.use('/', bookRoutes);rs
-
-app.use('/', bookRouter);
 app.use('/', loginRoute);
 
-// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -99,6 +89,10 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
+
+
+
+
 // passport
 
 app.use(
@@ -108,6 +102,8 @@ app.use(
     saveUninitialized: true,
   }),
 );
+
+
 
 app.use(passport.initialize());
 
