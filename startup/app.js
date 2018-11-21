@@ -4,18 +4,18 @@ const express = require('express');
 const passport = require('passport');
 const path = require('path');
 const bodyParser = require('body-parser');
+const ensureLogin = require('connect-ensure-login');
 const logger = require('morgan');
 const hbs = require('hbs');
 const flash = require('connect-flash');
 const MongooseStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+const loggedRoute = require('./routes/auth/dashboard');
 const authRoutes = require('./routes/auth/signup');
-// const bookRoutes = require('./routes/booksgallery.js');
 const indexRouter = require('./routes/index');
 const loginRoute = require('./routes/auth/signin');
 const bookRouter = require('./routes/books');
 // const usersRouter = require('./routes/users');
-
 const app = express();
 // passport
 app.use(flash());
@@ -32,8 +32,13 @@ app.use(
   }),
 );
 require('./rules/passport')(app);
- // Routes
+// Routes
 
+app.use('/', loggedRoute);
+app.use('/', authRoutes);
+app.use('/', indexRouter);
+app.use('/', bookRouter);
+app.use('/', loginRoute);
 
 
 // Mongoose conection
@@ -67,13 +72,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', authRoutes);
-app.use('/', indexRouter);
-
-// app.use('/', bookRoutes);rs
-
-app.use('/', bookRouter);
-app.use('/', loginRoute);
 
 // app.use('/users', usersRouter);
 
