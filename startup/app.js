@@ -17,6 +17,7 @@ const loginRoute = require('./routes/auth/signin');
 const editRoute = require('./routes/auth/profileEdit');
 const bookRouter = require('./routes/books');
 const dashboardRoute = require('./routes/auth/dashboard');
+const AboutRouter = require('./routes/about');
 
 const app = express();
 // passport
@@ -75,6 +76,7 @@ app.use('/', bookRouter);
 app.use('/', loginRoute);
 app.use('/', dashboardRoute);
 app.use('/', editRoute);
+app.use('/', AboutRouter);
 
 
 // catch 404 and forward to error handler
