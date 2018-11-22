@@ -8,6 +8,18 @@
       {{> books}}
     {{/each}}
     </div>
+  {{#if prevPage}}
+    <div>
+      <p>{{prevPage}}</p>
+      <a href="/books/{{prevPage}}">Prev Page</a>
+    </div>
+  {{/if}}
+  {{#if nextPage}}
+    <div>
+      <p>{{nextPage}}</p>
+      <a href="/books/{{nextPage}}">Next Page</a>
+    </div>
+  {{/if}}
 </div>
 
 </section> 
