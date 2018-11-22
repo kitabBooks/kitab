@@ -15,6 +15,7 @@ const bookSchema = new Schema({
 });
 
 bookSchema.plugin(mongoosePaginate);
+bookSchema.index({ title: 'text' });
 
 const Book = mongoose.model('Book', bookSchema);
 

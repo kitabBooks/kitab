@@ -31,8 +31,9 @@ passport.use(
       if (!bcrypt.compareSync(password, user.password)) {
         return next(null, false, { message: 'Incorrect password' });
       }
-
+      console.log('success');
       return next(null, user);
+
     });
   }),
 );
