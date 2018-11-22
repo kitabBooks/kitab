@@ -1,3 +1,44 @@
+.text {
+  font-size: 2.5em;
+  text-align: center;
+}
+.service-box {
+  font-size: 1.3em;
+  color:rgb(135, 145, 156);
+  text-align: center;
+  margin: 30px 3% 0;
+  width: 20%;
+}
 
+.abouttitle {
+  font-size: 1.7em;
+  color:rgb(56, 84, 163);
+}
+
+.col {
+  float: left;
+}
+
+.col-3 {
+  width: 30%;
+}
+
+.mar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-text {
+  margin: 10px auto;
+  text-align: center;
+  width: 70%;
+  font-size: 1.3em;
+  color:rgb(135, 145, 156);
+}
+
+.container {
+  margin: 0 auto;
+  width: 1200px;
+}
 
 /*# sourceMappingURL=style.css.map */
