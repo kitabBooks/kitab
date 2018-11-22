@@ -29,6 +29,7 @@ editRoute.post('/profile', ensureLogin.ensureLoggedIn({
     city: req.body.city,
     state: req.body.state,
   };
+  if (password !== ''|| password !==user.password) {
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashedPass = bcrypt.hashSync(userInfo.password, salt);
 
