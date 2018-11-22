@@ -15,6 +15,7 @@
           {{#if user}}
             <a href="#"><img src="img.jpg" alt="{{name}}" style="width:100%"></a>
               <li role="presentation"><a href="/">Home</a></li>
+              <li role="presentation"><a href="/dashboard">{{user.name}}</a></li>
               <li role="presentation"><a href="/interest">Interests</a></li>
               <li role="presentation"><a href="/post">Post</a></li>
               <li role="presentation"><a href="/profile">Profile</a></li>
@@ -30,6 +31,13 @@
       </nav>
     
       <h3 class="text-muted">Kitab</h3>
+    </div>
+
+    <div>
+      <form action="/books/" method="get">
+        <input type="serch" name="q" id="search">
+        <button type="submit">Search</button>
+      </form>
     </div>
 
     {{{body}}}
