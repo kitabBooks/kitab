@@ -59,6 +59,7 @@ router.get('/books/', (req, res, next) => {
       prevPage,
       queryStringNext,
       queryStringPrev,
+      user: req.user,
     });
   });
 });
