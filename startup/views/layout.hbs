@@ -1,50 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" integrity="sha384-VY3F8aCQDLImi4L+tPX4XjtiJwXDwwyXNbkH7SHts0Jlo85t1R15MlXVBKLNx+dj" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body >
-   
-    <div class="header clearfix container" >
-      <nav class="">
-       
-        <ul class="nav nav-pills pull-right">
-          {{#if user}}
-            <a href="#"><img src="img.jpg" alt="{{name}}" style="width:100%"></a>
-              <li role="presentation"><a href="/">Home</a></li>
-              <li role="presentation"><a href="/dashboard">{{user.name}}</a></li>
-              <li role="presentation"><a href="/interest">Interests</a></li>
-              <li role="presentation"><a href="/books/1">Books</a></li>
-              <li role="presentation"><a href="/post">Post</a></li>
-              <li role="presentation"><a href="/profile">Profile</a></li>
-              <li role="presentation"><a href="/users/logout">Log Out</a></li>
-            {{else}}
-              <li role="presentation"><a href="/">Home</a></li>
-               <li role="presentation"><a href="/about">About</a></li>
-                <li role="presentation"><a href="/books/1">Books</a></li>
-              <li role="presentation"><a href="/users/signin">Sign in</a></li>
-              <li role="presentation"><a href="/signup">Sign up</a></li>
-          {{/if}}
-        </ul>
-      </nav>
-    
-      <h3 class="text-muted">Kitab</h3>
-    </div>
 
-    <div>
-      <form action="/books/" method="get">
-        <input type="serch" name="q" id="search">
-        <button type="submit">Search</button>
-      </form>
-    </div>
+<head>
+  <title>{{title}}</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 
-    {{{body}}}
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
 
-     
-    <footer class="page-footer bg-primary font-small cyan darken-3 ">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" integrity="sha384-VY3F8aCQDLImi4L+tPX4XjtiJwXDwwyXNbkH7SHts0Jlo85t1R15MlXVBKLNx+dj"
+    crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-white">
+
+
+  
+
+
+
+  <nav class="navbar navbar-default justify-content-between">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header ">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Kitab</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav nav-pills pull-right">
+            {{#if user}}
+            {{!-- <a href="#"><img src="img.jpg" alt="{{name}}" style="width:100%"></a> --}}
+            <li role="presentation"><a  href="/">Home</a></li>
+            <li role="presentation"><a  href="/dashboard">{{user.name}}</a></li>
+            <li role="presentation"><a  href="/interest">Interests</a></li>
+            <li role="presentation"><a  href="/books/1">Books</a></li>
+            <li role="presentation"><a  href="/post">Post</a></li>
+            <li role="presentation"><a  href="/profile">Profile</a></li>
+            <li role="presentation"><a  href="/users/logout">Log Out</a></li>
+            {{else}} 
+            <li role="presentation"><a  href="/">Home</a></li>
+            <li role="presentation"><a  href="/about">About</a></li>
+            <li role="presentation"><a  href="/books/1">Books</a></li>
+            <li role="presentation"><a  href="/users/signin">Sign in</a></li>
+            <li role="presentation"><a   href="/signup">Sign up</a></li>
+            {{/if}}
+          </ul>
+          <form action="/books/" method="get" class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="serch" name="q" id="search" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+  </nav>
+  <div class="header clearfix container">
+    <nav class="">
+
+
+    </nav>
+
+    <h3 class="text-muted">Kitab</h3>
+  </div>
+
+
+
+  {{{body}}}
+
+
+  <footer class="page-footer bg-primary font-small cyan darken-3 ">
 
     <!-- Footer Elements -->
     <div class="container ">
@@ -56,17 +117,17 @@
         <div class="col-md-12 py-5">
           <div class="mb-5 flex-center">
             <address>
-  <strong>Kitab</strong><br>
-  1355 Market Street, Suite 900<br>
-  San Francisco, CA 94103<br>
-  <abbr title="Phone">P:</abbr> (123) 456-7890
-</address>
+              <strong>Kitab</strong><br>
+              1355 Market Street, Suite 900<br>
+              San Francisco, CA 94103<br>
+              <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
 
-<address>
-  <strong>Full Name</strong><br>
-  <a href="mailto:#">first.last@example.com</a>
-</address>
-           
+            <address>
+              <strong>Full Name</strong><br>
+              <a href="mailto:#">first.last@example.com</a>
+            </address>
+
           </div>
         </div>
         <!-- Grid column -->
@@ -83,6 +144,7 @@
     </div>
     <!-- Copyright -->
 
-  </footer> 
-  </body>
+  </footer>
+</body>
+
 </html>
