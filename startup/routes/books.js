@@ -1,8 +1,6 @@
 const express = require('express');
 const axios = require('axios');
 const Book = require('../models/books');
-
-const CircularJSON = 'circular-json';
 const router = express.Router();
 
 /* GET books page. */
@@ -19,18 +17,16 @@ router.get('/books/:page', (req, res, next) => {
   // console.log(page);
   const options = {
     page,
-    limit: 6,
+    limit: 3,
   };
 
   Book.paginate({}, options, (err, x) => {
-    console.log(x);
     const books = x.docs;
     const pages = x.totalPages;
     const nextP = x.hasNextPage;
     const prevP = x.hasPrevPage;
     const nextPage = pages > parseInt(options.page, 10) ? parseInt(options.page, 10) + 1 : null;
     const prevPage = parseInt(options.page, 10) > 1 ? parseInt(options.page, 10) - 1 : null;
-    console.log(nextPage);
     res.render('bookgallery', {
       books,
       pages,

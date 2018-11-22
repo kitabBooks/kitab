@@ -3,19 +3,19 @@
 <div class="container">
   
   <h1>Book Gallery</h1>
-    <div class="row">
-    {{#each books}}
-      {{> books}}
-    {{/each}}
-    </div>
   {{#if prevPage}}
-    <div>
+    <div class = "col">
       <p>{{prevPage}}</p>
       <a href="/books/{{prevPage}}">Prev Page</a>
     </div>
   {{/if}}
+    <div class="col">
+    {{#each books}}
+      {{> books}}
+    {{/each}}
+    </div>
   {{#if nextPage}}
-    <div>
+    <div class = "col">
       <p>{{nextPage}}</p>
       <a href="/books/{{nextPage}}">Next Page</a>
     </div>
