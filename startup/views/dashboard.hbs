@@ -1,22 +1,28 @@
-<section>
-<div class="container">
+<section class="container-fluid">
+<div >
   {{message}}
 </div>
-<div>
-  <h2>Welcome {{user.name}}</h2>
+<div class=" jumbotron">
+<div class="container">
+  <h4>Welcome to Kitab, {{user.name}} !!!</h4>
 </div>
-<div>
+</div>
+<div class="container row">
+  <div class="col-sm-6 col-md-4">
   <h2>Your Interests</h2>
   {{#each booksInterests}}
     {{>books}}
   {{/each}}
   <a href="#">Add New</a>
+  
 </div>
-<div class>
+<div >
   <h2>Your Books</h2>
   {{#each books}}
     {{>books}}
   {{/each}}
   <a href="#">Add New</a>
 </div>
+</div>
+
 </section>
