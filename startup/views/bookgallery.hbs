@@ -1,26 +1,63 @@
 <section>
 
-<div class="">
-  
-  <h1>Book Gallery</h1>
-  {{#if prevPage}}
-    <div class = "col-sm-6 col-md-4">
+  <div class="row">
+
+    
+    {{!-- {{#if prevPage}}
+    <div class="col-sm-6 col-md-6 col-lg-12">
       <p>{{prevPage}}</p>
       <a href="/books/{{queryStringPrev}}">Prev Page</a>
     </div>
-  {{/if}}
-    <div class="col-sm-6 col-md-4">
-    {{#each books}}
+    {{/if}} --}}
+    <div class="col-sm-12 col-md-6 col-lg-12">
+      <h1>Book Gallery</h1>
+      {{#each books}}
       {{> books}}
-    {{/each}}
+      {{/each}}
     </div>
-  {{#if nextPage}}
-    <div class = "col-sm-6 col-md-4">
+    {{!-- {{#if nextPage}}
+    <div class="col-sm-12 col-md-6 col-lg-12">
       <p>{{nextPage}}</p>
       <a href="/books/{{queryStringNext}}">Next Page</a>
     </div>
-  {{/if}}
-</div>
+    {{#if nextPage}} --}}
 
-</section> 
+  </div>
+  <nav aria-label="...">
+    <ul class="pager">
+     
+      {{#if prevPage}}
+      <li><a href="/books/{{queryStringPrev}}">{{prevPage}}- Previous</a></li>
+      {{/if}}
+      {{#if nextPage}}
+      <li> <a href="/books/{{queryStringNext}}">{{nextPage}}- Next</a></li>
+      {{/if}}
+    </ul>
+  </nav>
 
+</section>
+{{!-- <nav aria-label="Page navigation">
+  <ul class="pagination">
+    {{#if nextPage}}
+    <li>
+      
+      <a href="/books/{{queryStringPrev}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {{/if}}
+
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    {{#if prevPage}}
+    <li>
+      <a href="/books/{{queryStringNext}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {{/if}}
+  </ul>
+</nav> --}}
