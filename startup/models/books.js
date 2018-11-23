@@ -4,7 +4,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
-  // image:
+  img: String,
   title: String,
   description: String,
   ISBN: Number,
