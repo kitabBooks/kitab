@@ -1,14 +1,22 @@
-<section>
+<section class="container">
   <h2>Book Description</h2>
   <div class = "book-details">
     <img class="book-img" src= {{book.image}} alt=""/>
-      <ul>
-        <li>{{book.title}}</li>
-        <li>{{book.description}}</li>
-        <li>{{book.author}}</li>
-        <li>{{book.interest}}</li>
-        <li>{{book.post}}</li>
+      <ul class="list-group">
+  <li class="list-group-item active">{{book.title}}</li>
+  <li class="list-group-item">{{book.description}}</li>
+  <li class="list-group-item">{{book.author}}</li>
+  <li class="list-group-item">{{book.interest}}</li>
+  <li class="list-group-item">{{book.post}}</li>
       </ul>
+{{!-- </ul>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul> --}}
 
     <div class="">
       <button type="submit">Exchange</button>
