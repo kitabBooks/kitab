@@ -2,12 +2,12 @@
 
 <div class="container">
   
-  <h1>{{user.name}}'s interests</h1>
+  <h1>{{user.name}}'s posts</h1>
 
   {{#if prevPage}}
     <div class = "col">
       <p>{{prevPage}}</p>
-      <a href="/interests/{{queryStringPrev}}">Prev Page</a>
+      <a href="/posts/{{queryStringPrev}}">Prev Page</a>
     </div>
   {{/if}}
     <div class="col">
@@ -18,7 +18,7 @@
   {{#if nextPage}}
     <div class = "col">
       <p>{{nextPage}}</p>
-      <a href="/interests/{{queryStringNext}}">Next Page</a>
+      <a href="/posts/{{queryStringNext}}">Next Page</a>
     </div>
   {{/if}}
 </div>

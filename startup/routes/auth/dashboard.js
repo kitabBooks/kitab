@@ -1,48 +1,139 @@
 const ensureLogin = require('connect-ensure-login');
-
 const express = require('express');
 
 const authRoutes = express.Router();
+const User = require('../../models/users');
+const Book = require('../../models/books');
 
-authRoutes.get('/dashboard', ensureLogin.ensureLoggedIn({
-  baseUrl: '/',
-  redirectTo: '/users/signin'
-}), (req, res) => {
-  res.render('dashboard', {
-    user: req.user
+authRoutes.get(
+  '/dashboard',
+  ensureLogin.ensureLoggedIn({
+    baseUrl: '/',
+    redirectTo: '/users/signin',
+  }),
+  (req, res) => {
+    res.render('dashboard', {
+      user: req.user,
+    });
+  },
+);
+
+// Interest routes
+
+authRoutes.get('/interests/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }),
+  (req, res, next) => {
+    const userId = req.user._id;
+    const page = req.query.page || 1;
+    User.findById(userId).then((user) => {
+      const interestBooks = user.interest;
+      console.log(interestBooks);
+      Book.paginate({ _id: interestBooks }, { page, limit: 3 }).then((x) => {
+        const books = x.docs;
+        const pages = x.totalPages;
+        const nextPage = pages > parseInt(page, 10) ? parseInt(page, 10) + 1 : null;
+        const prevPage = parseInt(page, 10) > 0 ? parseInt(page, 10) - 1 : null;
+        const queryStringNext = `?page=${nextPage}`;
+        const queryStringPrev = `?page=${nextPage}`;
+        res.render('interests', {
+          user: req.user,
+          books,
+          nextPage,
+          prevPage,
+          queryStringNext,
+          queryStringPrev,
+        });
+      });
+    });
   });
-});
-
-authRoutes.get('/interest', ensureLogin.ensureLoggedIn({
-  baseUrl: '/',
-  redirectTo: '/users/signin'
-}), (req, res, next) => {
-  res.render('interests');
-});
-authRoutes.post('/interests', (req, res, next) => {
+authRoutes.post('/interests/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }), (req, res, next) => {
   // eslint-disable-next-line no-underscore-dangle
-  const userId = req.user._id;
-  const userInfo = {
-    interest: ['books added'],
-  };
-  User.findByIdAndUpdate(userId, userInfo, {
-    new: true
-  }, (err, theUser) => {
-    if (err) {
-      next(err);
-      return;
-    }
+  console.log(req.user);
+  console.log(req.params.id);
+  let userId;
+  if (req.user !== undefined) {
+    userId = req.user._id;
+    const bookId = req.params.id;
+    const userInfo = {
+      interest: bookId,
+    };
+    User.findByIdAndUpdate(
+      userId,
+      { $addToSet: userInfo },
+      {
+        new: true,
+      },
+      (err, theUser) => {
+        if (err) {
+          next(err);
+          return;
+        }
 
-    req.session.currentUser = theUser;
+        req.session.currentUser = theUser;
 
-    res.redirect('/dashboard');
-  });
+        res.redirect('/interests');
+      },
+    );
+  } else res.redirect('/signup');
 });
 
+// Post routes
+
+authRoutes.get('/posts/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }),
+  (req, res, next) => {
+    const userId = req.user._id;
+    const page = req.query.page || 1;
+    User.findById(userId).then((user) => {
+      const postBooks = user.post;
+      console.log(postBooks);
+      Book.paginate({ _id: postBooks }, { page, limit: 3 }).then((x) => {
+        const books = x.docs;
+        const pages = x.totalPages;
+        const nextPage = pages > parseInt(page, 10) ? parseInt(page, 10) + 1 : null;
+        const prevPage = parseInt(page, 10) > 0 ? parseInt(page, 10) - 1 : null;
+        const queryStringNext = `?page=${nextPage}`;
+        const queryStringPrev = `?page=${nextPage}`;
+        res.render('posts', {
+          user: req.user,
+          books,
+          nextPage,
+          prevPage,
+          queryStringNext,
+          queryStringPrev,
+        });
+      });
+    });
+  });
 
 
+authRoutes.post('/posts/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }), (req, res, next) => {
+  // eslint-disable-next-line no-underscore-dangle
+  console.log(req.user);
+  console.log(req.params.id);
+  let userId;
+  if (req.user !== undefined) {
+    userId = req.user._id;
+    const bookId = req.params.id;
+    const userInfo = {
+      post: bookId,
+    };
+    User.findByIdAndUpdate(
+      userId,
+      { $addToSet: userInfo },
+      {
+        new: true,
+      },
+      (err, theUser) => {
+        if (err) {
+          next(err);
+          return;
+        }
 
+        req.session.currentUser = theUser;
 
-
+        res.redirect('/posts/');
+      },
+    );
+  } else res.redirect('/signup');
+});
 
 module.exports = authRoutes;

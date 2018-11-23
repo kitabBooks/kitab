@@ -1,24 +1,19 @@
-{{!-- <div class="book" style="width: 33.333%;">
-      <img class="book-img" src= {{this.img}} alt="">
-      <div class="book-body">
-        <h5 class="book-title">{{this.title}}</h5>
-        <h5 class="book-author">{{this.author}}</h5>
-        <p class="book-description">{{this.description}}</p>
-        <a href="#">Detail</a>
-      </div>
-</div> --}}
-
-  
-
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img class="book-img" src= {{this.img}} alt="">
-      <div class="caption">
-       <h2 class="book-title">{{this.title}}</h2>
-        <h3 class="book-author">{{this.author}}</h3>
-       <p class="book-description">{{this.description}}</p>
-        <p><a href="#" class="btn btn-primary" role="button">Details</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <img class="book-img" src={{this.img}} alt="">
+    <div class="caption">
+      <h2 class="book-title">{{this.title}}</h2>
+      <h3 class="book-author">{{this.author}}</h3>
+      <p class="book-description">{{this.description}}</p>
+      <p>
+        <a href="/books/{{this._id}}" class="btn btn-primary" role="button">Details</a>
+        <form action="/interests/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-primary interest-btn" role="button">Interest</button>
+        </form>
+        <form action="/posts/{{this._id}}" method="POST">
+        <button type="submit" class="btn btn-primary interest-btn" role="button">Post</button>
+        </form>
+      </p>
     </div>
   </div>
-  
+</div>

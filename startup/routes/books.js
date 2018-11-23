@@ -1,5 +1,5 @@
 const express = require('express');
-const axios = require('axios');
+const ensureLogin = require('connect-ensure-login');
 const Book = require('../models/books');
 
 const router = express.Router();
@@ -15,21 +15,13 @@ router.get('/books/', (req, res, next) => {
   //     console.log(err);
   //   });
   const page = req.query.page || 1;
-  // console.log(page);
   let query = {};
-  // const query = Book.find();
-  // query.setOptions({ lean: true });
-  // query.collection(Book.collection);
-  // query.where('age').gte(21).exec(callback);
+
   if (req.query.q && req.query.q.length > 0) {
     query = {
       $text: {
         $search: req.query.q,
       },
-      // $or: [
-      //   { title: req.query.q },
-      //   { author: req.query.q },
-      // ],
     };
   }
 
@@ -39,7 +31,6 @@ router.get('/books/', (req, res, next) => {
   };
 
   console.log('query', query);
-  console.log('parm', req.query.q);
 
   Book.paginate(query, options, (err, x) => {
     const books = x.docs;
@@ -65,3 +56,14 @@ router.get('/books/', (req, res, next) => {
 });
 
 module.exports = router;
+
+router.get('/books/:id', (req, res, next) => {
+  const bookId = req.params.id;
+  Book.findOne({ _id: bookId })
+    .then((book) => {
+      res.render('bookdescription', { book, user: req.user });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
