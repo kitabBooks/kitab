@@ -30,7 +30,6 @@ router.get('/books/', (req, res, next) => {
   };
 
   console.log('query', query);
-  console.log('parm', req.query.q);
 
   Book.paginate(query, options, (err, x) => {
     const books = x.docs;
@@ -50,6 +49,7 @@ router.get('/books/', (req, res, next) => {
       prevPage,
       queryStringNext,
       queryStringPrev,
+      user: req.user,
     });
   });
 });
