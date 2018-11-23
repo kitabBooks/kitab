@@ -55,3 +55,14 @@ router.get('/books/', (req, res, next) => {
 });
 
 module.exports = router;
+
+router.get('/book/:id', (req, res, next) => {
+  const bookId = req.params.id;
+  Book.findOne({ _id: bookId })
+    .then((book) => {
+      res.render('bookdescription', { book });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
