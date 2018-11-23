@@ -1,4 +1,5 @@
 const express = require('express');
+const ensureLogin = require('connect-ensure-login');
 const Book = require('../models/books');
 
 const router = express.Router();
@@ -56,11 +57,11 @@ router.get('/books/', (req, res, next) => {
 
 module.exports = router;
 
-router.get('/book/:id', (req, res, next) => {
+router.get('/books/:id', (req, res, next) => {
   const bookId = req.params.id;
   Book.findOne({ _id: bookId })
     .then((book) => {
-      res.render('bookdescription', { book });
+      res.render('bookdescription', { book, user: req.user });
     })
     .catch((error) => {
       console.log(error);
