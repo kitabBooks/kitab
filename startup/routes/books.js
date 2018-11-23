@@ -30,8 +30,6 @@ router.get('/books/', (req, res, next) => {
     limit: 3,
   };
 
-  
-
   Book.paginate(query, options, (err, x) => {
     const books = x.docs;
     const pages = x.totalPages;
