@@ -1,2 +1,14 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="container">Latest Books</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+                <div class="col">
+                    {{#each books}}
+                        {{>books}}
+                    {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

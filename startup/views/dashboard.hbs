@@ -1,0 +1,33 @@
+<section class="">
+<div >
+  {{message}}
+</div>
+<div class=" jumbotron bg-primary">
+<div class="container">
+  <h4>Welcome to Kitab, {{user.name}} !!!</h4>
+</div>
+</div>
+<div class="container ">
+ 
+  <div class="row">
+  <div class="col-xs-12 col-md-8">
+    <h2>Your Interests</h2>
+  {{#each booksInterests}}
+    {{>books}}
+  {{/each}}
+  <a href="/interest">Add New</a>
+  </div>
+
+  <div class="col-xs-6 col-md-4">
+ <h2>Your Books</h2>
+  {{#each books}}
+    {{>books}}
+  {{/each}}
+  <a href="/interest">Add New</a>
+  </div>
+</div>
+</div>
+
+
+
+</section>

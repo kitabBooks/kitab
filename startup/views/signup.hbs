@@ -1,0 +1,71 @@
+<div class="container">
+
+<h2 class="page-header">Join our club</h2>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam commodi distinctio magni excepturi, est temporibus, sit voluptates, veritatis quia reiciendis repellat natus aliquam corporis? In, maiores. Voluptatem voluptatibus neque maxime?</p>
+{{#if user}}
+        <div class="alert alert-danger">Username has taken already try new</div> 
+{{/if}}
+{{#if mail}}
+        <div class="alert alert-danger">Email has taken already try new</div> 
+{{/if}} 
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{message}}</div>
+      {{/each}}
+{{/if}}
+<div class="jumbotron">
+  <div class="container">
+<form  method="post" action="/signup">
+   <div class="form-group col-lg-6 col-centered">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name" autocomplete="off">
+  </div>
+  <div class="form-group col-lg-6 col-centered">
+    <label>Email</label>
+    <input type="email" class="form-control" placeholder="Email" name="email" autocomplete="off">
+  </div>
+   <div class="form-group col-lg-6 col-centered">
+    <label>Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password" autocomplete="off">
+  </div>
+  <div class="form-group col-lg-6 col-centered">
+    <label>Username</label>
+    <input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off">
+  </div>
+   <div class="form-group col-lg-6 col-centered">
+    <label>Zip</label>
+    <input type="number" class="form-control" placeholder="zip" name="zip" autocomplete="off">
+
+  </div>
+  <div class="form-group col-lg-6 col-centered">
+    <label>Address</label>
+    <input type="text" class="form-control" placeholder="Address" name="address" autocomplete="off">
+  </div>
+  <div class="form-group col-lg-6 col-centered">
+    <label>City</label>
+    <input type="text" class="form-control" placeholder="City" name="city" autocomplete="off">
+  </div>
+  <div class="form-group col-lg-6 col-centered">
+    <label>State</label>
+   <select class="form-control" name="state">
+  {{#each  statesArray }} 
+  <option>{{this}}</option>
+  {{/each}}
+  
+</select>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <button id="singlebutton" type="submit" class="btn btn-primary center-block ">Sign Up</button>
+            
+          </button>
+      </div>
+</div>
+
+  
+</form>
+</div>
+</div>
+</div>

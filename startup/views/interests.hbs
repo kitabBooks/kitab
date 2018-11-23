@@ -1,0 +1,26 @@
+<section>
+
+<div class="container">
+  
+  <h1>{{user.name}}'s interests</h1>
+
+  {{#if prevPage}}
+    <div class = "col">
+      <p>{{prevPage}}</p>
+      <a href="/interests/{{queryStringPrev}}">Prev Page</a>
+    </div>
+  {{/if}}
+    <div class="col">
+    {{#each books}}
+      {{> owneredBooks}}
+    {{/each}}
+    </div>
+  {{#if nextPage}}
+    <div class = "col">
+      <p>{{nextPage}}</p>
+      <a href="/interests/{{queryStringNext}}">Next Page</a>
+    </div>
+  {{/if}}
+</div>
+
+</section> 
