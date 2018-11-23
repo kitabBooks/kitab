@@ -6,14 +6,7 @@ const router = express.Router();
 
 /* GET books page. */
 router.get('/books/', (req, res, next) => {
-  // axios.get('https://www.googleapis.com/books/v1/volumes?q=javascript&key=AIzaSyBFY6x3Zudnvc2BdtAqpVsRk_lhfVahjnc')
-  //   .then((response) => {
-  //     console.log(response);
-  //     const books = response;
-  //     res.render('bookgallery', { books });
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   });
+
   const page = req.query.page || 1;
   let query = {};
 
