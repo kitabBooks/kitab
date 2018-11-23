@@ -26,9 +26,13 @@ authRoutes.get('/interests/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirec
     const page = req.query.page || 1;
     User.findById(userId).then((user) => {
       const interestBooks = user.interest;
-      console.log(interestBooks);
+      // console.log(interestBooks);
       Book.paginate({ _id: interestBooks }, { page, limit: 3 }).then((x) => {
-        const books = x.docs;
+        let books = x.docs.slice();
+        books = books.map((e) => {
+          e.src = 'interests';
+          return e;
+        });
         const pages = x.totalPages;
         const nextPage = pages > parseInt(page, 10) ? parseInt(page, 10) + 1 : null;
         const prevPage = parseInt(page, 10) > 0 ? parseInt(page, 10) - 1 : null;
@@ -86,7 +90,11 @@ authRoutes.get('/posts/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo:
       const postBooks = user.post;
       console.log(postBooks);
       Book.paginate({ _id: postBooks }, { page, limit: 3 }).then((x) => {
-        const books = x.docs;
+        let books = x.docs;
+        books = books.map((e) => {
+          e.src = 'posts';
+          return e;
+        });
         const pages = x.totalPages;
         const nextPage = pages > parseInt(page, 10) ? parseInt(page, 10) + 1 : null;
         const prevPage = parseInt(page, 10) > 0 ? parseInt(page, 10) - 1 : null;
@@ -134,6 +142,54 @@ authRoutes.post('/posts/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirec
       },
     );
   } else res.redirect('/signup');
+});
+
+authRoutes.get('/posts/delete/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users.signin' }), (req, res, next) => {
+  const userId = req.user._id;
+  const bookId = req.params.id;
+  const userInfo = {
+    post: bookId,
+  };
+  User.findByIdAndUpdate(
+    userId,
+    { $pull: userInfo },
+    {
+      new: true,
+    },
+    (err, theUser) => {
+      if (err) {
+        next(err);
+        return;
+      }
+
+      req.session.currentUser = theUser;
+    },
+    res.redirect('/posts/'),
+  );
+});
+
+authRoutes.get('/interests/delete/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users.signin' }), (req, res, next) => {
+  const userId = req.user._id;
+  const bookId = req.params.id;
+  const userInfo = {
+    interest: bookId,
+  };
+  User.findByIdAndUpdate(
+    userId,
+    { $pull: userInfo },
+    {
+      new: true,
+    },
+    (err, theUser) => {
+      if (err) {
+        next(err);
+        return;
+      }
+
+      req.session.currentUser = theUser;
+    },
+    res.redirect('/interests/'),
+  );
 });
 
 module.exports = authRoutes;
