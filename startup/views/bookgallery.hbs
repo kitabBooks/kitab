@@ -1,21 +1,21 @@
 <section>
 
-<div class="container">
+<div class="">
   
   <h1>Book Gallery</h1>
   {{#if prevPage}}
-    <div class = "col">
+    <div class = "col-sm-6 col-md-4">
       <p>{{prevPage}}</p>
       <a href="/books/{{queryStringPrev}}">Prev Page</a>
     </div>
   {{/if}}
-    <div class="col">
+    <div class="col-sm-6 col-md-4">
     {{#each books}}
       {{> books}}
     {{/each}}
     </div>
   {{#if nextPage}}
-    <div class = "col">
+    <div class = "col-sm-6 col-md-4">
       <p>{{nextPage}}</p>
       <a href="/books/{{queryStringNext}}">Next Page</a>
     </div>
