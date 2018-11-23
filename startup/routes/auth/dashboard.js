@@ -51,8 +51,6 @@ authRoutes.get('/interests/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirec
   });
 authRoutes.post('/interests/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }), (req, res, next) => {
   // eslint-disable-next-line no-underscore-dangle
-  console.log(req.user);
-  console.log(req.params.id);
   let userId;
   if (req.user !== undefined) {
     userId = req.user._id;
@@ -88,7 +86,6 @@ authRoutes.get('/posts/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo:
     const page = req.query.page || 1;
     User.findById(userId).then((user) => {
       const postBooks = user.post;
-      console.log(postBooks);
       Book.paginate({ _id: postBooks }, { page, limit: 3 }).then((x) => {
         let books = x.docs;
         books = books.map((e) => {
@@ -115,8 +112,6 @@ authRoutes.get('/posts/', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo:
 
 authRoutes.post('/posts/:id', ensureLogin.ensureLoggedIn({ baseUrl: '/', redirectTo: '/users/signin' }), (req, res, next) => {
   // eslint-disable-next-line no-underscore-dangle
-  console.log(req.user);
-  console.log(req.params.id);
   let userId;
   if (req.user !== undefined) {
     userId = req.user._id;
