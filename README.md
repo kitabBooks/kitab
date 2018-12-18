@@ -19,7 +19,7 @@ kitab is a community which connects people by books.
 ## Project Wareframe
 * Marvel
 
-## Authors
+## Developers
 - [Elaine Henrique](https://github.com/Elaine-Henrique)
 - [Gabriel Sicuto](https://github.com/gsicuto)
 - [Mohsan Abbas](https://github.com/mohsanabbas)
